@@ -29,6 +29,10 @@ def purchase(userid, clientid):
     result = db["purchase"].insert_one(data)
     return jsonify({"Response": str(result.inserted_id)})
 
+@app.route("/")
+def index():
+    return jsonify({"Response": "OK"})
+
 
 if __name__=='__main__':
     app.run()
