@@ -11,7 +11,7 @@ db["user"].create_index("email", unique=True)
 db["user"].create_index("contact", unique=True)
 db["card"].create_index("userid", unique=True)
 
-run_with_ngrok(app)
+#run_with_ngrok(app)
 
 @app.route("/get/<info>", methods=["GET"])
 def getData(info):
