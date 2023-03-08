@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, render_template
 from pymongo import MongoClient
 import random, json, datetime
 import secrets
+from flask_ngrok import run_with_ngrok
 
 app = Flask(__name__)
 client = MongoClient("mongodb+srv://cardandeducate:cardandeducate@cardandeducate.ydrpzsc.mongodb.net/?retryWrites=true&w=majority")
@@ -9,6 +10,8 @@ db = client["Information"]
 db["user"].create_index("email", unique=True)
 db["user"].create_index("contact", unique=True)
 db["card"].create_index("userid", unique=True)
+
+run_with_ngrok(app)
 
 @app.route("/get/<info>", methods=["GET"])
 def getData(info):
@@ -35,4 +38,4 @@ def index():
 
 
 if __name__=='__main__':
-       app.run()
+    app.run()
